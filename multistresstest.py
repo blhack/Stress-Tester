@@ -2,6 +2,19 @@ import threading
 import urllib
 import random
 import time
+import sys
+
+if len(sys.argv) > 1:
+	url = sys.argv[1]
+else:
+	url = ""
+
+if len(url) > 0:
+	pass
+
+else:
+	print "You need to specify a URL, defaulting to localhost"
+	url = "http://localhost"
 
 max = 0
 times = []
@@ -44,7 +57,11 @@ def initthreads(max):
         	#item_id = 4106
 		#url = "http://www.gibsonandlily.com/comments/%s" % (item_id)
 		#url = "http://www.gibsonandlily.com/static"
-		url = "http://www.gibsonandlily.com/static/staticloader.cgi"
+		#url = "http://www.gibsonandlily.com/static/staticloader.cgi"
+
+		
+
+		#url = "http://thingist.com"
 		StressTest(url).start()
 		time.sleep(delay)		
 		if i == (max - 1):
@@ -70,6 +87,7 @@ while max != "end":
 	
 	count = 0	
 	times = []
+	print "Say \'end\' to quit"
 	max = raw_input("How many urls should I load? ")
 	
 	try:
